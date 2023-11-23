@@ -38,7 +38,7 @@ function addGamesToPage(games) {
         // between the end of the src attribute and the end of the tag ("/>")
         const game = games[i];
         div.innerHTML = `<p>${game.name}</p> <img src=${game.img} class="game-img" alt="Image of game"> 
-                        <p>${game.description}</p>`;
+                        <p>${game.description}</p> <p>Backers: ${game.backers}</p>`;
         // append the game to the games-container
         gamesContainer.append(div);
 
@@ -90,10 +90,10 @@ function filterUnfundedOnly() {
     deleteChildElements(gamesContainer);
 
     // use filter() to get a list of games that have not yet met their goal
-
+    let underfunded = GAMES_JSON.filter(game => game.pledged < game.goal);
 
     // use the function we previously created to add the unfunded games to the DOM
-
+    addGamesToPage(underfunded);
 }
 
 // show only games that are fully funded
@@ -101,10 +101,10 @@ function filterFundedOnly() {
     deleteChildElements(gamesContainer);
 
     // use filter() to get a list of games that have met or exceeded their goal
-
+    let funded = GAMES_JSON.filter(game => game.pledged >= game.goal);
 
     // use the function we previously created to add unfunded games to the DOM
-
+    addGamesToPage(funded);
 }
 
 // show all games
@@ -112,7 +112,7 @@ function showAllGames() {
     deleteChildElements(gamesContainer);
 
     // add all games from the JSON data to the DOM
-
+    addGamesToPage(GAMES_JSON)
 }
 
 // select each button in the "Our Games" section
@@ -121,6 +121,9 @@ const fundedBtn = document.getElementById("funded-btn");
 const allBtn = document.getElementById("all-btn");
 
 // add event listeners with the correct functions to each button
+unfundedBtn.addEventListener('click', filterUnfundedOnly);
+fundedBtn.addEventListener('click', filterFundedOnly);
+allBtn.addEventListener('click', showAllGames);
 
 
 /*************************************************************************************
