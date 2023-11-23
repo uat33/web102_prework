@@ -40,7 +40,7 @@ function addGamesToPage(games) {
         div.innerHTML = `<p>${game.name}</p> <img src=${game.img} class="game-img" alt="Image of game"> 
                         <p>${game.description}</p> <p>Backers: ${game.backers}</p>`;
         // append the game to the games-container
-        gamesContainer.append(div);
+        gamesContainer.appendChild(div);
 
     }        
 }
@@ -91,7 +91,6 @@ function filterUnfundedOnly() {
 
     // use filter() to get a list of games that have not yet met their goal
     let underfunded = GAMES_JSON.filter(game => game.pledged < game.goal);
-
     // use the function we previously created to add the unfunded games to the DOM
     addGamesToPage(underfunded);
 }
@@ -135,13 +134,20 @@ allBtn.addEventListener('click', showAllGames);
 const descriptionContainer = document.getElementById("description-container");
 
 // use filter or reduce to count the number of unfunded games
+const numberOfUnfundedGames = GAMES_JSON.reduce((acc, game) => {
+    return game.pledged < game.goal ? acc + 1 : acc + 0}, 0);
 
-
+const numberOfFundedGames = GAMES_JSON.length - numberOfUnfundedGames;  
 // create a string that explains the number of unfunded games using the ternary operator
-
+const displayStr = `A total of $${totalRaised.toLocaleString('en-us')} has been raised for 
+${numberOfFundedGames} ${numberOfFundedGames == 1 ? "game" : "games"}.
+Currently, ${numberOfUnfundedGames} ${numberOfUnfundedGames == 1 ? "game remains" : "games remain"} unfunded.
+${numberOfUnfundedGames == 0 ? "Thank you for your generosity!" : "We need your help to fund these amazing games!"}`;
 
 // create a new DOM element containing the template string and append it to the description container
-
+let p = document.createElement('p');
+p.innerHTML = `<p>${displayStr}</p>`;
+descriptionContainer.appendChild(p);
 /************************************************************************************
  * Challenge 7: Select & display the top 2 games
  * Skills used: spread operator, destructuring, template literals, sort 
