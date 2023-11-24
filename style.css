@@ -25,7 +25,7 @@ body {
     
 }
 
-.stats-container:hover{
+.stats-card:hover{
     cursor: pointer;
     box-shadow: 0 0 30px lightblue;
 }
