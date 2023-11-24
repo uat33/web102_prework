@@ -145,7 +145,7 @@ Currently, ${numberOfUnfundedGames} ${numberOfUnfundedGames == 1 ? "game remains
 ${numberOfUnfundedGames == 0 ? "Thank you for your generosity!" : "We need your help to fund these amazing games!"}`;
 
 // create a new DOM element containing the template string and append it to the description container
-let p = document.createElement('p');
+const p = document.createElement('p');
 p.innerHTML = `<p>${displayStr}</p>`;
 descriptionContainer.appendChild(p);
 /************************************************************************************
@@ -161,7 +161,33 @@ const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
 });
 
 // use destructuring and the spread operator to grab the first and second games
-
+const [first, second] = GAMES_JSON;
 // create a new element to hold the name of the top pledge game, then append it to the correct element
 
+const firstName = document.createElement('p');
+firstName.innerHTML = `<p>${first.name}</p>`;
+firstGameContainer.appendChild(firstName);
 // do the same for the runner up item
+const secondName = document.createElement('p');
+secondName.innerHTML = `<p>${second.name}</p>`;
+secondGameContainer.appendChild(secondName);
+
+/*  Bonus
+
+Add a navbar to get to sections quickly
+
+*/
+
+// add a descripive id for each navbar section in index.html
+let ids = {"welcome": "Welcome", "stats": "Stats", "our-list": "Our Games"}
+
+const navbar = document.getElementById("header");
+for (const id in ids){
+    // create an anchor element
+    const ourGamesLink = document.createElement('a');
+    // link to the appropriate id. Give the anchor a class of navbar
+    // this way we can style anything else we want to put in the navbar in one place
+    ourGamesLink.innerHTML = `<a href=#${id} class="navbar">${ids[id]}</a>`;
+    // add it to the div at the top
+    navbar.appendChild(ourGamesLink);
+}

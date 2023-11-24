@@ -73,6 +73,12 @@ body {
     text-align: center;
 }
 
+.navbar {
+    padding: 14px 16px;
+    font-size: 18px;
+
+}
+
 button {
     font-family: 'Cabin';
     border: none;
