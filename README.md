@@ -19,14 +19,14 @@ The following **optional** features are implemented:
 
 * [x] List anything else that you can get done to improve the app functionality!
 * [x] Added a navbar to easily access each section of the app.
-## Video Walkthrough
+<!--## Video Walkthrough
 
 Here's a walkthrough of implemented features:
 
 <img src='https://imgur.com/bV27BjU.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
+-->
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with LICEcap  
+<!--GIF created with LICEcap -->
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
@@ -34,7 +34,7 @@ GIF created with LICEcap
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+<!--Describe any challenges encountered while building the app. -->
 
 ## License
 
